@@ -1,22 +1,24 @@
-import React from 'react'
-import Header from '../components/Header'
-import SpecialityMenu from '../components/SpecialityMenu'
-import TopDoctors from '../components/TopDoctors'
-import Banner from '../components/Banner'
-import SearchDoctors from '../components/SearchDoctors'
+import React from "react";
+import Header from "../components/Header";
+import SpecialityMenu from "../components/SpecialityMenu";
+import TopDoctors from "../components/TopDoctors";
+import Banner from "../components/Banner";
+import SearchDoctors from "../components/SearchDoctors";
 
 const Home = () => {
-  return (
-    <div>
-      <div className="sm:p-4 pb-2 max-w-md mx-auto">
-        <SearchDoctors />
-      </div>
-      <Header />
-      <SpecialityMenu />
-      <TopDoctors />
-      <Banner />
-    </div>
-  )
-}
+	return (
+		<div>
+			<div className="sm:p-4 pb-2 max-w-md mx-auto">
+				<SearchDoctors />
+			</div>
+			<div className="relative -mx-4 sm:-mx-[10%]">
+				<Header />
+			</div>
+			<SpecialityMenu />
+			<TopDoctors />
+			<Banner />
+		</div>
+	);
+};
 
-export default Home
+export default Home;

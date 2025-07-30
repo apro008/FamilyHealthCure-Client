@@ -5,6 +5,12 @@ import profile_pic from "./profile_pic.png";
 import contact_image from "./contact_image.png";
 import about_image from "./about_image.png";
 import logo from "./logo.svg";
+import logo_new from "./logo_new.png";
+import logo_new2 from "./logo_new2.png";
+//Banner
+import banner1 from "./banner/banner1.jpeg";
+import banner2 from "./banner/banner2.jpeg";
+
 import dropdown_icon from "./dropdown_icon.svg";
 import menu_icon from "./menu_icon.svg";
 import cross_icon from "./cross_icon.png";
@@ -59,6 +65,10 @@ export const assets = {
 	stripe_logo,
 	razorpay_logo,
 	icon2,
+	logo_new,
+	logo_new2,
+	banner1,
+	banner2,
 };
 
 export const specialityData = [

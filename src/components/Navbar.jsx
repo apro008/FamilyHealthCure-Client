@@ -18,9 +18,9 @@ const Navbar = () => {
 					navigate("/");
 					scrollTo(0, 0);
 				}}
-				src={assets.logo}
-				alt="Near Dr."
-				className="w-44 cursor-pointer"
+				src={assets.logo_new}
+				alt="Family health care."
+				className="w-28 cursor-pointer"
 			/>
 			<ul className="hidden md:flex items-start gap-5 font-medium">
 				<NavLink to={"/"}>
@@ -36,8 +36,8 @@ const Navbar = () => {
 					<hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden rounded-full" />
 				</NavLink>
 				<NavLink to={"/contact"}>
-					<li className="py-1">CONTACT</li>
-					<hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden rounded-full" />
+					<li className="py-1">CONTACT US</li>
+					<hr className="border-none outline-none h-0.5 bg-primary w-4/5 m-auto hidden rounded-full" />
 				</NavLink>
 			</ul>
 
@@ -132,7 +132,7 @@ const Navbar = () => {
 								scrollTo(0, 0);
 							}}
 							to={"/contact"}>
-							<p className="px-8 py-2 rounded-full inline-block">CONTACT</p>
+							<p className="px-8 py-2 rounded-full inline-block">CONTACT US</p>
 						</NavLink>
 					</ul>
 				</div>
