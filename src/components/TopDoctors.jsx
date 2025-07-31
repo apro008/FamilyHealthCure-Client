@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
-import { dummyDoctors } from "../pages/Doctors.jsx";
+import { dummyDoctors } from "../utils/contactInfo.js";
 
 const TopDoctors = () => {
 	const { getDoctorsData } = useContext(AppContext);
