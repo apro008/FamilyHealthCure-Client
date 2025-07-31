@@ -69,6 +69,8 @@ export const assets = {
 	logo_new2,
 	banner1,
 	banner2,
+	doc7,
+	doc1,
 };
 
 export const specialityData = [
