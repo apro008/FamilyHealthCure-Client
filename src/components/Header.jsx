@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { assets } from "../assets/assets_frontend/assets";
+import {
+	contactInfo,
+	getFormattedHours,
+	getSundayHours,
+} from "../utils/contactInfo";
 
 const Header = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -82,15 +87,6 @@ const Header = () => {
 										<img src={assets.arrow_icon} className="w-3" />
 									</a>
 								</div>
-
-								{/* Right Side - Image */}
-								{/* <div className="md:w-1/2 relative hidden md:block">
-									<img
-										src={assets.header_img}
-										alt=""
-										className="w-full md:absolute bottom-0 rounded-lg"
-									/>
-								</div> */}
 							</div>
 						</div>
 					</div>
