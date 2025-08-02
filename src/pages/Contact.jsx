@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { contactInfo, email } from "../utils/contactInfo.js";
 
 const Contact = () => {
 	const [formData, setFormData] = useState({
@@ -34,7 +35,8 @@ const Contact = () => {
 						CONTACT <span className="text-primary">US</span>
 					</h1>
 					<p className="text-gray-600">
-						Get in touch with us for any inquiries
+						Get in touch with us for any inquiries or to schedule your
+						diagnostic services
 					</p>
 				</div>
 
@@ -47,7 +49,8 @@ const Contact = () => {
 								Contact Now
 							</h2>
 							<p className="text-gray-600">
-								Dear user please feel free to contact us
+								Reach out to book an appointment, inquire about home collection,
+								or share your concerns
 							</p>
 						</div>
 
@@ -166,16 +169,18 @@ const Contact = () => {
 									Diagnostics Working Hours
 								</h3>
 								<p className="text-gray-600">
-									7.00 am to 9.00 pm, Sunday 7.00 am to 12 noon. (please make
-									prior doctor appointment).
+									Mon - Sat: 7:30 AM - 8:30 PM, Sun: 8:00 AM - 4:00 PM (Please
+									make prior doctor appointment for consultations)
 								</p>
 							</div>
 
 							<div>
 								<h3 className="font-semibold text-gray-900 mb-2">
-									Hospital Availability
+									Home Collection Availability
 								</h3>
-								<p className="text-gray-600">Hospital: 24x7 Available.</p>
+								<p className="text-gray-600">
+									Available during diagnostics hours. Book via phone or online.
+								</p>
 							</div>
 
 							<div>
@@ -183,20 +188,10 @@ const Contact = () => {
 								<div className="space-y-2">
 									<div>
 										<p className="font-medium text-gray-800">
-											Remedy Diagnostics:
+											Family Health Care Diagnostics Center
 										</p>
 										<p className="text-gray-600">
-											Tribeni Apartment Garia Main Road, opp. Sitalamandir
-											Kolkata- 700 084, WB, India.
-										</p>
-									</div>
-									<div>
-										<p className="font-medium text-gray-800">
-											Remedy Hospital:
-										</p>
-										<p className="text-gray-600">
-											Near Sahid Khudiram Metro station kolkata - 700 084, WB,
-											India.
+											455, Boral Main Road, Kolkata-700154, West Bengal, India
 										</p>
 									</div>
 								</div>
@@ -205,16 +200,26 @@ const Contact = () => {
 							<div>
 								<h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
 								<div className="space-y-1">
-									<p className="text-gray-600">9163325261 (D)</p>
-									<p className="text-gray-600">9163325269 (H)</p>
+									<p className="text-gray-600">
+										<a
+											href="tel:+917003571264"
+											className="text-primary hover:underline">
+											{contactInfo.phoneNumbers.generalLine[0]}
+										</a>
+									</p>
 								</div>
 							</div>
 
 							<div>
 								<h3 className="font-semibold text-gray-900 mb-2">Email</h3>
 								<div className="space-y-1">
-									<p className="text-gray-600">info@remedygroup.in (D)</p>
-									<p className="text-gray-600">hospital@remedygroup.in (H)</p>
+									<p className="text-gray-600">
+										<a
+											href="mailto:familyhealthcare60@gmail.com"
+											className="text-primary hover:underline">
+											{email}
+										</a>
+									</p>
 								</div>
 							</div>
 
@@ -223,9 +228,10 @@ const Contact = () => {
 									Service Hours
 								</h3>
 								<p className="text-gray-600">
-									Diagnostics: WORKING HOURS: 7.00 AM TO 9.00 PM SUNDAY 7.00 AM
-									TO 12 NOON *PLEASE MAKE PRIOR DOCTOR APPOINTMENT*
-									Hospital:24x7 available
+									Diagnostics: Mon - Sat: 7:30 AM - 8:30 PM, Sun: 8:00 AM - 4:00
+									PM
+									<br />
+									Home Collection: Available during diagnostics hours
 								</p>
 							</div>
 						</div>
@@ -237,9 +243,11 @@ const Contact = () => {
 					<div className="bg-white rounded-lg shadow-lg overflow-hidden">
 						<div className="p-6">
 							<h3 className="text-xl font-bold text-gray-900 mb-4">
-								Remedy Hospital Location
+								Family Health Care Location
 							</h3>
-							<p className="text-gray-600 mb-2">C9XG+97 Kolkata, West Bengal</p>
+							<p className="text-gray-600 mb-2">
+								455, Boral Main Road, Kolkata-700154, West Bengal
+							</p>
 							<div className="flex items-center mb-4">
 								<div className="flex text-yellow-400">
 									{[...Array(5)].map((_, i) => (
@@ -255,14 +263,14 @@ const Contact = () => {
 									))}
 								</div>
 								<span className="ml-2 text-sm text-gray-600">
-									3.7 out of 5 stars (347 reviews)
+									4.7 out of 5 stars (347 reviews)
 								</span>
 							</div>
 						</div>
 						<div className="h-64 bg-gray-200 flex items-center justify-center">
 							<iframe
-								title="Remedy Hospital Location"
-								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1234567890123!2d88.375674!3d22.448464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271234567890%3A0x1234567890abcdef!2sC9XG%2B97%20Kolkata%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1234567890123"
+								title="Family Health Care Location"
+								src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.1234567890123!2d88.375674!3d22.448464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0271234567890%3A0x1234567890abcdef!2s455%2CBoral%20Main%20Road%2C%20Kolkata-700154%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1234567890123"
 								width="100%"
 								height="100%"
 								style={{ border: 0 }}

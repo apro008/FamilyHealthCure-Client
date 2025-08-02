@@ -14,32 +14,49 @@ const About = () => {
 				<img
 					className="w-full md:max-w-[360px]"
 					src={assets.about_image}
-					alt=""
+					alt="Family Health Care Diagnostics Center"
 				/>
 				<div className="flex flex-col justify-center gap-6 md:w-2/4 text-sm text-gray-600">
 					<p>
-						Family health care. is a smart healthcare platform designed to help
-						users easily find nearby hospitals and doctors, view real-time
-						availability, and book appointments quickly and hassle-free.
+						Family Health Care is a premier diagnostics center in Kolkata,
+						dedicated to providing comprehensive diagnostic services and
+						consultations with multiple specialized doctors under one roof.
+						Located at 455, Boral Main Road, Kolkata-700154, we offer both
+						appointment-based and walk-in consultations for your convenience.
 					</p>
 					<p>
-						The app is built with the goal of reducing stress for patients and
-						their families by minimizing the traditional effort of visiting
-						hospitals or calling for appointment confirmations.
+						Our state-of-the-art facility provides advanced pathology services,
+						including blood and urine sample collection at our center or your
+						home, ensuring accurate and timely results. Patients can easily book
+						appointments online or visit us directly to consult with our expert
+						doctors across various specialties.
 					</p>
 					<p>
-						Patients can search for doctors or hospitals based on their location
-						and specialization, view detailed profiles including experience and
-						ratings, and book appointments according to available slots.
+						Contact us at{" "}
+						<a
+							href="tel:+917003571264"
+							className="text-primary hover:underline">
+							+91 7003571264
+						</a>{" "}
+						or{" "}
+						<a
+							href="mailto:familyhealthcare60@gmail.com"
+							className="text-primary hover:underline">
+							familyhealthcare60@gmail.com
+						</a>{" "}
+						to schedule your visit or home collection service. Our user-friendly
+						platform simplifies the process, making healthcare accessible and
+						stress-free.
 					</p>
-					<b className="text-gray-800">Our vision</b>
+					<b className="text-gray-800">Our Vision</b>
 					<p>
-						Our vision is to revolutionize healthcare accessibility by building
-						a digital bridge between patients and healthcare providers, ensuring
-						quick, transparent, and stress-free access to medical services. We
-						aim to empower individuals with the ability to find trusted doctors
-						nearby, manage appointments with ease, and receive timely care — all
-						through a modern, user-friendly platform.
+						Our vision is to redefine diagnostic healthcare by offering a
+						seamless, patient-centric experience. We aim to bridge the gap
+						between patients and quality diagnostics through advanced
+						technology, expert medical professionals, and convenient services
+						like home sample collection. At Family Health Care, we strive to
+						deliver precise, timely, and compassionate care to empower healthier
+						lives.
 					</p>
 				</div>
 			</div>
@@ -52,25 +69,25 @@ const About = () => {
 
 			<div className="flex flex-col md:flex-row mb-20">
 				<div className="border px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-					<b>Find Nearby Doctors Instantly</b>
+					<b>Comprehensive Diagnostics</b>
 					<p>
-						Our smart search system helps you discover verified doctors and
-						hospitals around you based on your needs — no more calling or
-						guessing.
+						Access advanced pathology services, including blood and urine tests,
+						conducted with cutting-edge technology by experienced professionals
+						for accurate results.
 					</p>
 				</div>
 				<div className="border px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-					<b>Real-Time Availability</b>
+					<b>Flexible Consultations</b>
 					<p>
-						We display live doctor availability so you can book appointments at
-						your convenience without waiting or rechecking.
+						Book appointments with specialized doctors or walk in at your
+						convenience to receive expert care tailored to your needs.
 					</p>
 				</div>
 				<div className="border px-10 md:px-16 py-8 sm:py-16 flex flex-col gap-5 text-[15px] hover:bg-primary hover:text-white transition-all duration-300 text-gray-600 cursor-pointer">
-					<b>Hassle-Free Booking</b>
+					<b>Home Collection Services</b>
 					<p>
-						Book appointments in just a few taps. No long forms, no queues, no
-						confusion — just a seamless experience.
+						Enjoy the convenience of blood and urine sample collection from your
+						home, ensuring a hassle-free and safe diagnostic experience.
 					</p>
 				</div>
 			</div>

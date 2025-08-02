@@ -39,6 +39,10 @@ const Navbar = () => {
 					<li className="py-1">ABOUT</li>
 					<hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden rounded-full" />
 				</NavLink>
+				<NavLink to="/our-services">
+					<li className="py-1">OUR SERVICES</li>
+					<hr className="border-none outline-none h-0.5 bg-primary w-4/5 m-auto hidden rounded-full" />
+				</NavLink>
 				<NavLink to="/contact">
 					<li className="py-1">CONTACT US</li>
 					<hr className="border-none outline-none h-0.5 bg-primary w-4/5 m-auto hidden rounded-full" />
@@ -148,6 +152,19 @@ const Navbar = () => {
 									: "px-8 py-2 rounded-full hover:bg-gray-100"
 							}>
 							ABOUT
+						</NavLink>
+						<NavLink
+							onClick={() => {
+								setShowMenu(false);
+								scrollTo(0, 0);
+							}}
+							to="/our-services"
+							className={({ isActive }) =>
+								isActive
+									? "px-8 py-2 rounded-full bg-primary text-white"
+									: "px-8 py-2 rounded-full hover:bg-gray-100"
+							}>
+							OUR SERVICES
 						</NavLink>
 						<NavLink
 							onClick={() => {
