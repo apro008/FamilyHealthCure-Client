@@ -1,5 +1,4 @@
 import React from "react";
-import { assets } from "../assets/assets_frontend/assets";
 import { NavLink } from "react-router-dom";
 import { address, contactInfo, email } from "../utils/contactInfo.js";
 
