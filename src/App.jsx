@@ -12,6 +12,8 @@ import Appointment from "./pages/Appointment";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import SearchDoctorList from "./pages/SearchDoctorList";
+import PrivacyPolicy from "./pages/PrivacyPolicy.jsx";
+import HomeCollection from "./pages/HomeCollection.jsx";
 
 const App = () => {
 	return (
@@ -28,6 +30,8 @@ const App = () => {
 				<Route path={"/my-profile"} element={<MyProfile />} />
 				<Route path={"/my-appointments"} element={<MyAppointments />} />
 				<Route path={"/appointment/:docId"} element={<Appointment />} />
+				<Route path={"/privacy-policy"} element={<PrivacyPolicy />} />
+				<Route path={"/home-collection"} element={<HomeCollection />} />
 			</Routes>
 			<Footer />
 		</div>

@@ -3,7 +3,7 @@ import { assets } from "../assets/assets_frontend/assets.js";
 // Contact Information Data
 export const contactInfo = {
 	phoneNumbers: {
-		generalLine: ["+919073927700", "+919073927701", "03324272405"],
+		generalLine: ["+91 7003571264", "+91 9073927701", "033 24272405"],
 	},
 	openingHours: {
 		weekdays: {
@@ -22,6 +22,10 @@ export const contactInfo = {
 		certNumber: "NABL-M(EL)T-02669",
 	},
 };
+
+export const email = "familyhealthcare60@gmail.com";
+
+export const address = "455, Boral Main Road, kolkata-700154";
 
 // Helper functions for formatting
 export const formatPhoneNumber = (phone) => {
