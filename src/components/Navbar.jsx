@@ -97,7 +97,11 @@ const Navbar = () => {
 						showMenu ? "translate-x-0" : "-translate-x-full"
 					} md:hidden`}>
 					<div className="flex items-center justify-between px-5 py-6">
-						<img className="w-36" src={assets.logo} alt="Family health care." />
+						<img
+							className="w-28"
+							src={assets.logo_new}
+							alt="Family health care."
+						/>
 						<img
 							className="w-7 cursor-pointer"
 							onClick={() => setShowMenu(false)}
