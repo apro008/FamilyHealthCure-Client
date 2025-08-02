@@ -5,8 +5,14 @@ const OurServices = () => {
 	const [activeSection, setActiveSection] = useState("pathology");
 
 	const toggleSection = (section) => {
-		setActiveSection(section === "pathology" ? "outpatient" : "pathology");
+		if (activeSection !== section) {
+			setActiveSection(section);
+		} else {
+			setActiveSection(section === "pathology" ? "outpatient" : "pathology");
+		}
 	};
+
+	console.log("activeSection", activeSection);
 
 	return (
 		<div className="min-h-screen flex flex-col bg-gray-50">
