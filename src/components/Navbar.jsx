@@ -35,10 +35,10 @@ const Navbar = () => {
 					<li className="py-1">ALL DOCTORS</li>
 					<hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden rounded-full" />
 				</NavLink>
-				<NavLink to="/about">
+				{/* <NavLink to="/about">
 					<li className="py-1">ABOUT</li>
 					<hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden rounded-full" />
-				</NavLink>
+				</NavLink> */}
 				<NavLink to="/our-services">
 					<li className="py-1">OUR SERVICES</li>
 					<hr className="border-none outline-none h-0.5 bg-primary w-4/5 m-auto hidden rounded-full" />
@@ -140,7 +140,7 @@ const Navbar = () => {
 							}>
 							ALL DOCTORS
 						</NavLink>
-						<NavLink
+						{/* <NavLink
 							onClick={() => {
 								setShowMenu(false);
 								scrollTo(0, 0);
@@ -152,7 +152,7 @@ const Navbar = () => {
 									: "px-8 py-2 rounded-full hover:bg-gray-100"
 							}>
 							ABOUT
-						</NavLink>
+						</NavLink> */}
 						<NavLink
 							onClick={() => {
 								setShowMenu(false);
