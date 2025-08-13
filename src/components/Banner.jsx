@@ -11,10 +11,22 @@ const Banner = () => {
 			image: assets.banner1,
 			title: "Book Appointment",
 			subtitle: "With 100+ Trusted Doctors",
-			buttonText: "Create Account",
+			buttonText: "Book Now",
 		},
 		{
 			image: assets.banner2,
+			title: "Expert Healthcare",
+			subtitle: "Professional Medical Services",
+			buttonText: "Book Now",
+		},
+		{
+			image: assets.banner3,
+			title: "Book Appointment",
+			subtitle: "With 100+ Trusted Doctors",
+			buttonText: "Book Now",
+		},
+		{
+			image: assets.banner4,
 			title: "Expert Healthcare",
 			subtitle: "Professional Medical Services",
 			buttonText: "Book Now",
@@ -41,7 +53,6 @@ const Banner = () => {
 	const goToSlide = (index) => {
 		setCurrentSlide(index);
 	};
-
 	return (
 		<div className="relative my-20 md:mx-10 overflow-hidden rounded-lg">
 			{/* Banner Container */}
@@ -65,10 +76,17 @@ const Banner = () => {
 									<p>{banner.title}</p>
 									<p className="mt-2">{banner.subtitle}</p>
 								</div>
-								<button
+								{/* <button
 									onClick={() => {
 										navigate("/login");
 										scrollTo(0, 0);
+									}}
+									className="bg-white text-sm sm:text-base text-gray-600 px-8 py-3 rounded-full hover:scale-105 transition-all">
+									{banner.buttonText}
+								</button> */}
+								<button
+									onClick={() => {
+										window.location.href = "tel:+917003571264";
 									}}
 									className="bg-white text-sm sm:text-base text-gray-600 px-8 py-3 rounded-full hover:scale-105 transition-all">
 									{banner.buttonText}

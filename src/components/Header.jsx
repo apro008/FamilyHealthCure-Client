@@ -10,21 +10,33 @@ const Header = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
 
 	const headers = [
+		// {
+		// 	image: assets.banner1,
+		// 	// title: "Book Appointment",
+		// 	// subtitle: "With Trusted Doctors",
+		// 	// description:
+		// 	// 	"Simple browse through our extensive list of trusted doctors, schedule your appointment hassle-free.",
+		// 	// buttonText: "Book Appointment",
+		// },
+		// {
+		// 	image: assets.banner2,
+		// 	// title: "Expert Healthcare",
+		// 	// subtitle: "Professional Medical Services",
+		// 	// description:
+		// 	// 	"Access to qualified healthcare professionals for all your medical needs.",
+		// 	// buttonText: "Get Started",
+		// },
 		{
-			image: assets.banner1,
-			title: "Book Appointment",
-			subtitle: "With Trusted Doctors",
-			description:
-				"Simple browse through our extensive list of trusted doctors, schedule your appointment hassle-free.",
-			buttonText: "Book Appointment",
+			image: assets.banner3,
+			// title: "Book Appointment",
+			// subtitle: "With 100+ Trusted Doctors",
+			// buttonText: "Create Account",
 		},
 		{
-			image: assets.banner2,
-			title: "Expert Healthcare",
-			subtitle: "Professional Medical Services",
-			description:
-				"Access to qualified healthcare professionals for all your medical needs.",
-			buttonText: "Get Started",
+			image: assets.banner4,
+			// title: "Expert Healthcare",
+			// subtitle: "Professional Medical Services",
+			// buttonText: "Book Now",
 		},
 	];
 
@@ -52,45 +64,28 @@ const Header = () => {
 	return (
 		<div className="relative w-full overflow-hidden">
 			{/* Header Container */}
-			<div className="relative h-[600px] md:h-[600px] lg:h-[800px]">
-				{headers.map((header, index) => (
-					<div
-						key={index}
-						className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-							index === currentSlide ? "opacity-100" : "opacity-0"
-						}`}>
-						{/* Background Image */}
-						<div
-							className="w-full h-full bg-cover bg-center bg-no-repeat relative"
-							style={{ backgroundImage: `url(${header.image})` }}>
-							{/* Overlay */}
-							<div className="absolute inset-0 bg-black bg-opacity-50"></div>
-
-							{/* Content */}
-							<div className="relative z-10 flex flex-col md:flex-row items-center justify-center h-full px-6 md:px-10 lg:px-20">
-								{/* Left Side - Text Content */}
-								<div className="md:w-1/2 flex flex-col items-start justify-center gap-4 py-10 text-center md:text-start">
-									<div className="text-3xl md:text-4xl lg:text-5xl text-white font-semibold leading-tight">
-										<p>{header.title}</p>
-										<p className="mt-2">{header.subtitle}</p>
-									</div>
-									<div className="flex flex-col md:flex-row items-center gap-3 text-white text-sm font-light">
-										<img className="w-28" src={assets.group_profiles} alt="" />
-										<p className="text-center md:text-start">
-											{header.description}
-										</p>
-									</div>
-									<a
-										href="#speciality"
-										className="flex items-center gap-2 bg-white px-8 py-3 rounded-full text-gray-600 text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300">
-										{header.buttonText}{" "}
-										<img src={assets.arrow_icon} className="w-3" />
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				))}
+			<div
+				className="relative w-full overflow-hidden flex justify-center items-center bg-black"
+				style={{
+					// maxHeight: "700px", // limit banner height
+					width: "100%", // always fill width
+				}}>
+				{headers.map(
+					(header, index) =>
+						index === currentSlide && (
+							<img
+								key={index}
+								src={header.image}
+								alt={header.name || "Banner Image"}
+								style={{
+									width: "100%",
+									height: "100%",
+									maxHeight: "750px",
+									objectFit: "fill", // scale without cropping
+								}}
+							/>
+						)
+				)}
 			</div>
 
 			{/* Navigation Arrows */}

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
 import { dummyDoctors } from "../utils/contactInfo.js";
+import { useLocation } from "react-router-dom";
 
 // Dummy data for doctors matching the image
 
@@ -10,7 +11,7 @@ const Doctors = () => {
 	const [selectedSpecialty, setSelectedSpecialty] = useState("ALL");
 	const navigate = useNavigate();
 	const { getDoctorsData } = useContext(AppContext);
-
+	const location = useLocation();
 	// Get unique specialties from doctor data
 	const getUniqueSpecialties = () => {
 		const specialties = dummyDoctors.map((doc) => doc.speciality);
@@ -36,8 +37,17 @@ const Doctors = () => {
 	};
 
 	useEffect(() => {
-		applyFilter(selectedSpecialty);
-	}, []);
+		const specialtyFromMenu = location.state?.specialty;
+		console.log("specialtyFromMenu", specialtyFromMenu);
+
+		if (specialtyFromMenu) {
+			setSelectedSpecialty(specialtyFromMenu);
+			applyFilter(specialtyFromMenu);
+		} else {
+			setSelectedSpecialty("ALL");
+			applyFilter("ALL");
+		}
+	}, []); // 👈 No [location.state] here, run only on mount
 
 	useEffect(() => {
 		getDoctorsData();
@@ -77,7 +87,7 @@ const Doctors = () => {
 								{filterDoc.map((doctor) => (
 									<div
 										key={doctor._id}
-										onClick={() => navigate(`/appointment/${doctor._id}`)}
+										// onClick={() => navigate(`/appointment/${doctor._id}`)}
 										className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-2 cursor-pointer group">
 										{/* Doctor Image */}
 										<div className="p-6 pb-4">
@@ -114,9 +124,11 @@ const Doctors = () => {
 											</p>
 
 											{/* Book Appointment Button */}
-											<button className="w-full bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 hover:scale-105 transition-all duration-200 font-medium transform">
+											<a
+												href="tel:+917003571264"
+												className="w-full block text-center bg-red-600 text-white py-2 px-4 rounded-lg hover:bg-red-700 hover:scale-105 transition-all duration-200 font-medium transform">
 												Book an Appointment &gt;
-											</button>
+											</a>
 										</div>
 									</div>
 								))}

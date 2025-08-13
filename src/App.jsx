@@ -18,25 +18,27 @@ import OurServices from "./pages/OurServices.jsx";
 
 const App = () => {
 	return (
-		<div className="mx-4 sm:mx-[10%]">
-			<Toaster />
-			<Navbar />
-			<Routes>
-				<Route path={"/"} element={<Home />} />
-				<Route path={"/doctors"} element={<Doctors />} />
-				<Route path={"/about"} element={<About />} />
-				<Route path={"/contact"} element={<Contact />} />
-				<Route path={"/search"} element={<SearchDoctorList />} />
-				<Route path={"/login"} element={<Login />} />
-				<Route path={"/my-profile"} element={<MyProfile />} />
-				<Route path={"/my-appointments"} element={<MyAppointments />} />
-				<Route path={"/appointment/:docId"} element={<Appointment />} />
-				<Route path={"/privacy-policy"} element={<PrivacyPolicy />} />
-				<Route path={"/home-collection"} element={<HomeCollection />} />
-				<Route path={"/our-services"} element={<OurServices />} />
-			</Routes>
+		<>
+			<div className="mx-4 sm:mx-[10%]">
+				<Toaster />
+				<Navbar />
+				<Routes>
+					<Route path={"/"} element={<Home />} />
+					<Route path={"/doctors"} element={<Doctors />} />
+					<Route path={"/about"} element={<About />} />
+					<Route path={"/contact"} element={<Contact />} />
+					<Route path={"/search"} element={<SearchDoctorList />} />
+					<Route path={"/login"} element={<Login />} />
+					<Route path={"/my-profile"} element={<MyProfile />} />
+					<Route path={"/my-appointments"} element={<MyAppointments />} />
+					<Route path={"/appointment/:docId"} element={<Appointment />} />
+					<Route path={"/privacy-policy"} element={<PrivacyPolicy />} />
+					<Route path={"/home-collection"} element={<HomeCollection />} />
+					<Route path={"/our-services"} element={<OurServices />} />
+				</Routes>
+			</div>
 			<Footer />
-		</div>
+		</>
 	);
 };
 
