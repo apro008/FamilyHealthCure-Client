@@ -8,9 +8,9 @@ import SearchDoctors from "../components/SearchDoctors";
 const Home = () => {
 	return (
 		<div>
-			<div className="sm:p-4 pb-2 max-w-md mx-auto">
+			{/* <div className="sm:p-4 pb-2 max-w-md mx-auto">
 				<SearchDoctors />
-			</div>
+			</div> */}
 			<div className="relative -mx-4 sm:-mx-[10%]">
 				<Header />
 			</div>
