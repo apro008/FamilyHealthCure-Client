@@ -1,23 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-*{
-    font-family: Outfit;
+@layer base {
+  * {
+    font-family: 'Outfit', system-ui, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-gray-800;
+  }
 }
 
-.active hr{
-    @apply block
+@layer components {
+  .glass {
+    @apply bg-white/80 backdrop-blur-lg;
+  }
+
+  .section-heading {
+    @apply text-3xl sm:text-4xl font-semibold text-gray-900 tracking-tight;
+  }
+
+  .section-subtext {
+    @apply text-gray-500 text-base sm:text-lg max-w-xl mx-auto;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-3 rounded-xl font-medium
+           hover:bg-primary-dark hover:shadow-glow
+           transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary px-6 py-3 rounded-xl font-medium
+           hover:bg-primary hover:text-white
+           transition-all duration-200 active:scale-[0.98];
+  }
+
+  .btn-accent {
+    @apply bg-accent text-white px-6 py-3 rounded-xl font-medium
+           hover:bg-red-700 hover:shadow-lg
+           transition-all duration-200 active:scale-[0.98];
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-soft border border-gray-100
+           hover:shadow-card transition-all duration-300;
+  }
+
+  .input-modern {
+    @apply w-full px-4 py-3 bg-surface border border-gray-200 rounded-xl
+           focus:ring-2 focus:ring-primary/20 focus:border-primary focus:bg-white
+           transition-all duration-200 outline-none;
+  }
 }
 
-@media (max-width:740px){
-    .active p {
-        @apply text-white bg-primary
-    }
+/* Active nav indicator */
+.active hr {
+  @apply block;
 }
 
-::-webkit-scrollbar{
-    @apply hidden
+@media (max-width: 740px) {
+  .active p {
+    @apply text-white bg-primary;
+  }
+}
+
+/* Hide scrollbar globally */
+::-webkit-scrollbar {
+  @apply hidden;
+}
+
+/* Smooth image loading */
+img {
+  @apply transition-opacity duration-300;
 }

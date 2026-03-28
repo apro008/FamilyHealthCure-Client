@@ -19,8 +19,17 @@ import OurServices from "./pages/OurServices.jsx";
 const App = () => {
 	return (
 		<>
-			<div className="mx-4 sm:mx-[10%]">
-				<Toaster />
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<Toaster
+					toastOptions={{
+						style: {
+							borderRadius: '12px',
+							background: '#1a1a2e',
+							color: '#fff',
+							fontSize: '14px',
+						},
+					}}
+				/>
 				<Navbar />
 				<Routes>
 					<Route path={"/"} element={<Home />} />

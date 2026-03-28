@@ -1,222 +1,154 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import SEO from "../components/SEO";
 
 const OurServices = () => {
 	const [activeSection, setActiveSection] = useState("pathology");
 
 	const toggleSection = (section) => {
-		if (activeSection !== section) {
-			setActiveSection(section);
-		} else {
-			setActiveSection(section === "pathology" ? "outpatient" : "pathology");
-		}
+		setActiveSection(activeSection === section ? null : section);
 	};
 
-	console.log("activeSection", activeSection);
-
 	return (
-		<div className="min-h-screen flex flex-col bg-gray-50">
-			{/* Main Content */}
-			<div className="flex-grow max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-				<h1 className="text-3xl font-bold text-gray-800 mb-6">Our Services</h1>
-				<p className="text-gray-600 leading-6 mb-8">
-					At Family health care., we provide a comprehensive range of medical
-					services to meet your healthcare needs, from advanced diagnostic
-					testing to specialized outpatient care. Explore our offerings below.
-				</p>
+		<div className="py-8 sm:py-12 animate-fade-in">
+			<SEO
+				title="Our Services"
+				path="/our-services"
+				description="Family Health Care services: advanced pathology (blood collection, biochemistry, haematology, immunology, serology), outpatient department with specialist consultations, diagnostic imaging, vaccinations, health checkups and physiotherapy."
+				keywords="pathology services Kolkata, blood test Kolkata, OPD Kolkata, diagnostic services Boral, health checkup packages, vaccination Kolkata"
+			/>
+			<div className="max-w-3xl mx-auto">
+				<div className="mb-10">
+					<h1 className="section-heading">Our Services</h1>
+					<p className="text-gray-500 mt-3 leading-relaxed">
+						At Family Health Care, we provide a comprehensive range of medical
+						services to meet your healthcare needs, from advanced diagnostic
+						testing to specialized outpatient care.
+					</p>
+				</div>
 
 				{/* Pathology Section */}
-				<section className="mb-4">
+				<section className="mb-3">
 					<button
-						className="w-full flex justify-between items-center py-3 px-4 bg-primary text-white rounded-lg focus:outline-none"
+						className={`w-full flex justify-between items-center py-4 px-6 rounded-xl font-semibold text-left transition-all duration-200 ${
+							activeSection === "pathology"
+								? "bg-primary text-white shadow-glow"
+								: "bg-surface text-gray-800 hover:bg-surface-dark"
+						}`}
 						onClick={() => toggleSection("pathology")}>
-						<h2 className="text-xl font-semibold">Pathology</h2>
+						<span className="text-lg">Pathology</span>
 						<svg
-							className={`w-5 h-5 transition-transform ${
+							className={`w-5 h-5 transition-transform duration-300 ${
 								activeSection === "pathology" ? "rotate-180" : ""
 							}`}
 							fill="none"
 							stroke="currentColor"
+							strokeWidth="2.5"
 							viewBox="0 0 24 24">
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M19 9l-7 7-7-7"
-							/>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
 						</svg>
 					</button>
 					{activeSection === "pathology" && (
-						<div className="p-4 bg-white rounded-lg shadow-sm mt-2">
-							<ul className="space-y-4 text-gray-600">
-								<li>
-									<span className="font-semibold">01. Blood Collection</span>
-									<p className="mt-1 leading-6">
-										Collection of blood is done by experienced and qualified
-										Phlebotomists using Vacutainers.
-									</p>
-								</li>
-								<li>
-									<span className="font-semibold">02. Biochemistry</span>
-									<p className="mt-1 leading-6">
-										Fully Automated Biochemistry Analyzer. Stand-alone
-										Electrolyte Analyser.
-									</p>
-								</li>
-								<li>
-									<span className="font-semibold">03. Haematology</span>
-									<p className="mt-1 leading-6">
-										Fully Automated Blood cell counter, 5 part differential.
-										Complete Blood Count.
-									</p>
-								</li>
-								<li>
-									<span className="font-semibold">04. Immunology</span>
-									<p className="mt-1 leading-6">
-										State-of-the-art fully auto analyser from industry leader
-										Beckman Coulter.
-									</p>
-								</li>
-								<li>
-									<span className="font-semibold">05. Serology</span>
-									<p className="mt-1 leading-6">
-										Fully Automated Elisa Plate Reader with Washer.
-									</p>
-								</li>
-								<li>
-									<span className="font-semibold">06. Clinical Pathology</span>
-									<p className="mt-1 leading-6">
-										Microscopic Examination of all Body Fluids.
-									</p>
-								</li>
-								<li>
-									<span className="font-semibold">
-										07. How are the samples taken care of?
-									</span>
-									<p className="mt-1 leading-6">
-										All tests are carried out after running quality controls on
-										each machine. Quality controls are checked by senior staff.
-										Tests are carried out only after the controls are proper.
-									</p>
-								</li>
-							</ul>
+						<div className="card mt-2 p-6 animate-slide-down">
+							<div className="space-y-5">
+								{[
+									{ num: "01", title: "Blood Collection", desc: "Collection of blood is done by experienced and qualified Phlebotomists using Vacutainers." },
+									{ num: "02", title: "Biochemistry", desc: "Fully Automated Biochemistry Analyzer. Stand-alone Electrolyte Analyser." },
+									{ num: "03", title: "Haematology", desc: "Fully Automated Blood cell counter, 5 part differential. Complete Blood Count." },
+									{ num: "04", title: "Immunology", desc: "State-of-the-art fully auto analyser from industry leader Beckman Coulter." },
+									{ num: "05", title: "Serology", desc: "Fully Automated Elisa Plate Reader with Washer." },
+									{ num: "06", title: "Clinical Pathology", desc: "Microscopic Examination of all Body Fluids." },
+									{ num: "07", title: "Quality Assurance", desc: "All tests are carried out after running quality controls on each machine. Quality controls are checked by senior staff. Tests are carried out only after the controls are proper." },
+								].map((item) => (
+									<div key={item.num} className="flex gap-4">
+										<span className="text-xs font-bold text-primary bg-primary-light w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+											{item.num}
+										</span>
+										<div>
+											<h4 className="font-semibold text-gray-900 text-sm">{item.title}</h4>
+											<p className="text-gray-500 text-sm mt-0.5 leading-relaxed">{item.desc}</p>
+										</div>
+									</div>
+								))}
+							</div>
 						</div>
 					)}
 				</section>
 
-				{/* Outpatient Department Section */}
-				<section className="mb-4">
+				{/* Outpatient Section */}
+				<section className="mb-3">
 					<button
-						className="w-full flex justify-between items-center py-3 px-4 bg-primary text-white rounded-lg focus:outline-none"
+						className={`w-full flex justify-between items-center py-4 px-6 rounded-xl font-semibold text-left transition-all duration-200 ${
+							activeSection === "outpatient"
+								? "bg-primary text-white shadow-glow"
+								: "bg-surface text-gray-800 hover:bg-surface-dark"
+						}`}
 						onClick={() => toggleSection("outpatient")}>
-						<h2 className="text-xl font-semibold">Outpatient Department</h2>
+						<span className="text-lg">Outpatient Department</span>
 						<svg
-							className={`w-5 h-5 transition-transform ${
+							className={`w-5 h-5 transition-transform duration-300 ${
 								activeSection === "outpatient" ? "rotate-180" : ""
 							}`}
 							fill="none"
 							stroke="currentColor"
+							strokeWidth="2.5"
 							viewBox="0 0 24 24">
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth="2"
-								d="M19 9l-7 7-7-7"
-							/>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
 						</svg>
 					</button>
 					{activeSection === "outpatient" && (
-						<div className="p-4 bg-white rounded-lg shadow-sm mt-2">
-							<p className="text-gray-600 leading-6 mb-4">
+						<div className="card mt-2 p-6 animate-slide-down">
+							<p className="text-gray-600 leading-relaxed mb-6 text-sm">
 								Family Health Care has a renowned OPD facility/polyclinic
 								dedicated to providing comprehensive and top-notch healthcare
 								services. Situated in the heart of the city, it has been serving
 								the community for over the last decade, earning a reputation for
-								excellence in medical care. The clinic boasts a team of highly
-								skilled and compassionate medical professionals who are
-								committed to ensuring the well-being of their patients.
+								excellence in medical care.
 							</p>
-							<h3 className="text-lg font-semibold text-gray-700 mb-2">
-								Facilities and Services
-							</h3>
-							<ul className="list-disc list-inside text-gray-600 leading-6 mb-4">
-								<li>
-									<span className="font-medium">General Medicine:</span>{" "}
-									Providing primary healthcare services and managing various
-									illnesses, from common ailments to chronic conditions.
-								</li>
-								<li>
-									<span className="font-medium">Specialist Consultations:</span>{" "}
-									Offering expert consultations with specialists in various
-									fields such as cardiology, dermatology, gynecology,
-									orthopedics, and more.
-								</li>
-								<li>
-									<span className="font-medium">Diagnostic Imaging:</span>{" "}
-									Utilizing advanced imaging techniques like X-rays and
-									ultrasound for accurate and early detection of medical issues.
-								</li>
-								<li>
-									<span className="font-medium">Laboratory Services:</span>{" "}
-									Equipped with a well-equipped laboratory to conduct various
-									diagnostic tests and screenings for prompt and precise
-									results.
-								</li>
-								<li>
-									<span className="font-medium">
-										Vaccination and Immunization:
-									</span>{" "}
-									Providing vaccinations for adults and children, protecting
-									them against preventable diseases.
-								</li>
-								<li>
-									<span className="font-medium">Health Check-ups:</span>{" "}
-									Offering comprehensive health check-up packages to assess
-									overall health and detect potential health problems early on.
-								</li>
-								<li>
-									<span className="font-medium">Physiotherapy:</span> Offering
-									rehabilitation and physiotherapy services to aid in recovery
-									from injuries and improve mobility.
-								</li>
-							</ul>
-							<h3 className="text-lg font-semibold text-gray-700 mb-2">
-								Medical Team
-							</h3>
-							<p className="text-gray-600 leading-6 mb-4">
-								The success of Family Health Care can be attributed to its
-								dedicated and experienced medical professionals. The team
-								comprises highly qualified doctors, surgeons, nurses, and
-								support staff who work collaboratively to deliver personalized
-								and compassionate care to every patient. Each medical
-								practitioner is handpicked for their expertise and commitment to
-								upholding Family Health Care’s mission of providing exceptional
-								healthcare services.
-							</p>
-							<h3 className="text-lg font-semibold text-gray-700 mb-2">
-								Patient-Centric Approach
-							</h3>
-							<p className="text-gray-600 leading-6 mb-4">
-								One of the clinic’s distinguishing factors is its
-								patient-centric approach. Family Health Care places a strong
-								emphasis on patient satisfaction and comfort throughout their
-								medical journey. The staff ensures that patients are treated
-								with empathy, respect, and dignity, fostering a healing and
-								supportive environment. Moreover, the medical professionals take
-								the time to listen to patients’ concerns, thoroughly explain
-								diagnoses and treatment options, and encourage active
-								participation in their healthcare decisions.
-							</p>
-							<h3 className="text-lg font-semibold text-gray-700 mb-2">
-								Community Involvement
-							</h3>
-							<p className="text-gray-600 leading-6">
-								Family Health Care actively participates in community health
-								programs and health education initiatives. They conduct
-								awareness campaigns, health screenings, and educational seminars
-								to promote preventive healthcare measures and early detection of
-								diseases within the community.
-							</p>
+
+							<h3 className="text-base font-bold text-gray-900 mb-3">Facilities & Services</h3>
+							<div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+								{[
+									{ label: "General Medicine", desc: "Primary healthcare services and chronic condition management" },
+									{ label: "Specialist Consultations", desc: "Expert consultations in cardiology, dermatology, gynecology, and more" },
+									{ label: "Diagnostic Imaging", desc: "Advanced X-rays and ultrasound imaging" },
+									{ label: "Laboratory Services", desc: "Comprehensive diagnostic tests and screenings" },
+									{ label: "Vaccination", desc: "Immunization for adults and children" },
+									{ label: "Health Check-ups", desc: "Comprehensive health assessment packages" },
+									{ label: "Physiotherapy", desc: "Rehabilitation and mobility improvement services" },
+								].map((item, i) => (
+									<div key={i} className="p-3 bg-surface rounded-xl">
+										<h4 className="font-semibold text-gray-800 text-sm">{item.label}</h4>
+										<p className="text-gray-500 text-xs mt-0.5">{item.desc}</p>
+									</div>
+								))}
+							</div>
+
+							<div className="space-y-5">
+								<div>
+									<h3 className="text-base font-bold text-gray-900 mb-2">Medical Team</h3>
+									<p className="text-gray-600 text-sm leading-relaxed">
+										Our team comprises highly qualified doctors, surgeons, nurses, and
+										support staff who work collaboratively to deliver personalized
+										and compassionate care to every patient.
+									</p>
+								</div>
+								<div>
+									<h3 className="text-base font-bold text-gray-900 mb-2">Patient-Centric Approach</h3>
+									<p className="text-gray-600 text-sm leading-relaxed">
+										We place a strong emphasis on patient satisfaction and comfort.
+										Our professionals listen to concerns, explain diagnoses thoroughly,
+										and encourage active participation in healthcare decisions.
+									</p>
+								</div>
+								<div>
+									<h3 className="text-base font-bold text-gray-900 mb-2">Community Involvement</h3>
+									<p className="text-gray-600 text-sm leading-relaxed">
+										We actively participate in community health programs, awareness
+										campaigns, health screenings, and educational seminars to promote
+										preventive healthcare measures.
+									</p>
+								</div>
+							</div>
 						</div>
 					)}
 				</section>
