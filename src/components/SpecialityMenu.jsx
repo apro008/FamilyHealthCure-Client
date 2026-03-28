@@ -13,16 +13,23 @@ const SpecialityMenu = () => {
 		).values()
 	).filter((item) => item.image);
 
+	// Count doctors per speciality
+	const doctorCount = (speciality) =>
+		dummyDoctors.filter((d) => d.speciality === speciality).length;
+
 	return (
-		<section className="py-16 sm:py-20 animate-fade-in" id="speciality">
-			<div className="text-center mb-10">
-				<h2 className="section-heading">Find by Speciality</h2>
+		<section className="py-14 sm:py-20" id="speciality">
+			<div className="text-center mb-10 sm:mb-14">
+				<span className="text-primary text-sm font-semibold tracking-widest uppercase">
+					Departments
+				</span>
+				<h2 className="section-heading mt-2">Find by Speciality</h2>
 				<p className="section-subtext mt-3">
-					Browse through our extensive list of trusted doctors and schedule your appointment hassle-free.
+					Browse through our departments and schedule your appointment hassle-free.
 				</p>
 			</div>
 
-			<div className="flex justify-start sm:justify-center gap-4 sm:gap-6 overflow-x-auto pb-4 px-2 -mx-2">
+			<div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-5 max-w-4xl mx-auto">
 				{specialityData.map((item, index) => (
 					<div
 						key={index}
@@ -30,17 +37,22 @@ const SpecialityMenu = () => {
 							scrollTo(0, 0);
 							navigate("/doctors", { state: { specialty: item.speciality } });
 						}}
-						className="flex flex-col items-center gap-3 cursor-pointer flex-shrink-0 group">
-						<div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-primary-light flex items-center justify-center group-hover:bg-primary/10 group-hover:scale-110 group-hover:shadow-glow transition-all duration-300">
+						className="flex flex-col items-center gap-2 sm:gap-3 cursor-pointer group p-3 sm:p-5 rounded-2xl hover:bg-primary-light transition-all duration-300">
+						<div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-primary-light group-hover:bg-white flex items-center justify-center group-hover:scale-110 group-hover:shadow-soft transition-all duration-300">
 							<img
-								className="w-10 sm:w-12"
+								className="w-8 sm:w-10"
 								src={item.image}
 								alt={item.speciality}
 							/>
 						</div>
-						<span className="text-xs sm:text-sm font-medium text-gray-600 group-hover:text-primary transition-colors text-center max-w-[80px] sm:max-w-[100px]">
-							{item.speciality}
-						</span>
+						<div className="text-center">
+							<span className="text-xs sm:text-sm font-semibold text-gray-700 group-hover:text-primary transition-colors leading-tight block">
+								{item.speciality}
+							</span>
+							<span className="text-[10px] sm:text-xs text-gray-400 mt-0.5 block">
+								{doctorCount(item.speciality)} {doctorCount(item.speciality) === 1 ? "Doctor" : "Doctors"}
+							</span>
+						</div>
 					</div>
 				))}
 			</div>

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets_frontend/assets";
+import { contactInfo } from "../utils/contactInfo.js";
 
 const Header = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
+	const navigate = useNavigate();
 
 	const headers = [
 		{ image: assets.banner3 },
 		{ image: assets.banner4 },
+		{ image: assets.banner5 },
 	];
 
 	useEffect(() => {
@@ -16,13 +20,10 @@ const Header = () => {
 		return () => clearInterval(interval);
 	}, [headers.length]);
 
-	const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % headers.length);
-	const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + headers.length) % headers.length);
-
 	return (
-		<div className="relative w-full overflow-hidden rounded-2xl">
+		<div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl">
 			{/* Slides */}
-			<div className="relative w-full aspect-[16/6] sm:aspect-[16/5] bg-gray-100">
+			<div className="relative w-full aspect-[16/9] sm:aspect-[12/5]">
 				{headers.map((header, index) => (
 					<div
 						key={index}
@@ -33,33 +34,47 @@ const Header = () => {
 						}`}>
 						<img
 							src={header.image}
-							alt="Banner"
+							alt="Family Health Care"
 							className="w-full h-full object-cover"
 						/>
 					</div>
 				))}
+
+				{/* Overlay with CTA */}
+				<div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent z-10">
+					<div className="flex flex-col justify-center h-full px-6 sm:px-12 lg:px-16 max-w-xl">
+						<span className="text-white/80 text-xs sm:text-sm font-medium tracking-widest uppercase mb-2 sm:mb-3">
+							Family Health Care
+						</span>
+						<h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 sm:mb-5 drop-shadow-lg">
+							Quality Healthcare For Your Family
+						</h1>
+						<p className="text-white/80 text-sm sm:text-base mb-5 sm:mb-7 leading-relaxed hidden sm:block">
+							From general physicians to specialists — trusted healthcare for every generation.
+						</p>
+						<div className="flex flex-wrap gap-3">
+							<button
+								onClick={() => {
+									window.location.href = `tel:${contactInfo.phoneNumbers.generalLine[0]}`;
+								}}
+								className="bg-white text-gray-900 px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl font-semibold text-sm sm:text-base hover:bg-primary hover:text-white transition-all duration-300 shadow-lg">
+								Book Appointment
+							</button>
+							<button
+								onClick={() => {
+									navigate("/doctors");
+									scrollTo(0, 0);
+								}}
+								className="border-2 border-white/60 text-white px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl font-medium text-sm sm:text-base hover:bg-white/10 transition-all duration-300">
+								Our Doctors
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			{/* Navigation Arrows */}
-			<button
-				onClick={prevSlide}
-				className="absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-soft flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
-				aria-label="Previous slide">
-				<svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-					<path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-				</svg>
-			</button>
-			<button
-				onClick={nextSlide}
-				className="absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm hover:bg-white shadow-soft flex items-center justify-center transition-all duration-200 hover:scale-110 z-10"
-				aria-label="Next slide">
-				<svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-					<path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-				</svg>
-			</button>
-
 			{/* Dots */}
-			<div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+			<div className="absolute bottom-3 sm:bottom-5 right-5 sm:right-8 flex gap-2 z-20">
 				{headers.map((_, index) => (
 					<button
 						key={index}
