@@ -4,7 +4,6 @@ import { AppContext } from '../context/AppContext';
 
 const ConfirmLogout = ({ item }) => {
     const navigate = useNavigate();
-
     const { token, setToken } = useContext(AppContext)
 
     const logout = () => {
@@ -15,20 +14,25 @@ const ConfirmLogout = ({ item }) => {
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#00000066]">
-            <div className="bg-white rounded-xl p-6 shadow-xl m-6 w-full max-w-md">
-                <h2 className="text-lg font-semibold mb-4">Confirm Logout</h2>
-                <p className="mb-6">Are you sure you want to Logout this Account?</p>
-                <div className="flex justify-end space-x-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+            <div className="bg-white rounded-2xl p-6 shadow-elevated m-6 w-full max-w-sm animate-slide-up">
+                <div className="w-12 h-12 rounded-xl bg-accent-light flex items-center justify-center mb-4">
+                    <svg className="w-6 h-6 text-accent" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </div>
+                <h2 className="text-lg font-bold text-gray-900 mb-1">Confirm Logout</h2>
+                <p className="text-sm text-gray-500 mb-6">Are you sure you want to logout from your account?</p>
+                <div className="flex gap-3">
                     <button
                         onClick={() => item.setShowConfirm(false)}
-                        className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
+                        className="flex-1 py-2.5 bg-surface text-gray-700 rounded-xl font-medium text-sm hover:bg-surface-dark transition-colors cursor-pointer"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={logout}
-                        className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded hover:bg-primary-dull cursor-pointer"
+                        className="flex-1 py-2.5 bg-accent text-white rounded-xl font-medium text-sm hover:bg-red-700 transition-colors cursor-pointer"
                     >
                         Logout
                     </button>

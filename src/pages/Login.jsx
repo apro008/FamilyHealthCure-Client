@@ -3,6 +3,7 @@ import axios from "axios";
 import { AppContext } from "../context/AppContext";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import SEO from "../components/SEO";
 
 const Login = () => {
 	const { backendUrl, token, setToken } = useContext(AppContext);
@@ -53,89 +54,123 @@ const Login = () => {
 	}, [token]);
 
 	return (
-		<form onSubmit={onSubmitHandler} className="min-h-[80vh] flex items-center">
-			<div className="flex flex-col gap-3 m-auto items-start p-8 w-full sm:w-96 border rounded-xl text-zinc-600 text-sm shadow-lg">
-				<p className="text-2xl font-semibold">
-					{state === "Sign Up" ? "Create Account" : "Login"}
-				</p>
-				<p>
-					Please {state === "Sign Up" ? "sign up" : "login"} to book instant
-					appointment
-				</p>
+		<div className="min-h-[80vh] flex items-center justify-center py-12">
+			<SEO
+				title="Login"
+				path="/login"
+				description="Login or create an account at Family Health Care to book doctor appointments and manage your health records online."
+			/>
+			<form
+				onSubmit={onSubmitHandler}
+				className="w-full max-w-md animate-fade-in">
+				<div className="card p-8 sm:p-10">
+					{/* Header */}
+					<div className="text-center mb-8">
+						<div className="w-14 h-14 bg-primary-light rounded-2xl flex items-center justify-center mx-auto mb-4">
+							<svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+								<path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+							</svg>
+						</div>
+						<h1 className="text-2xl font-bold text-gray-900">
+							{state === "Sign Up" ? "Create Account" : "Welcome Back"}
+						</h1>
+						<p className="text-gray-500 text-sm mt-1">
+							{state === "Sign Up" ? "Sign up to book appointments" : "Login to your account"}
+						</p>
+					</div>
 
-				{state === "Sign Up" && (
-					<div className="flex flex-col gap-3 w-full">
-						<div className="w-full">
-							<label htmlFor="name">Full Name</label>
+					<div className="space-y-4">
+						{state === "Sign Up" && (
+							<>
+								<div>
+									<label className="block text-sm font-medium text-gray-700 mb-1.5">
+										Full Name
+									</label>
+									<input
+										className="input-modern"
+										type="text"
+										placeholder="John Doe"
+										onChange={(e) => setName(e.target.value)}
+										value={name}
+										required
+									/>
+								</div>
+								<div>
+									<label className="block text-sm font-medium text-gray-700 mb-1.5">
+										Phone
+									</label>
+									<input
+										className="input-modern"
+										type="number"
+										placeholder="+91 XXXXX XXXXX"
+										onChange={(e) => setPhone(e.target.value)}
+										value={phone}
+										required
+									/>
+								</div>
+							</>
+						)}
+
+						<div>
+							<label className="block text-sm font-medium text-gray-700 mb-1.5">
+								Email
+							</label>
 							<input
-								className="border border-zinc-300 rounded w-full p-2 mt-1"
-								type="text"
-								onChange={(e) => setName(e.target.value)}
-								value={name}
+								className="input-modern"
+								type="email"
+								placeholder="you@example.com"
+								onChange={(e) => setEmail(e.target.value)}
+								value={email}
 								required
 							/>
 						</div>
-						<div className="w-full">
-							<label htmlFor="phone">Phone</label>
+						<div>
+							<label className="block text-sm font-medium text-gray-700 mb-1.5">
+								Password
+							</label>
 							<input
-								className="border border-zinc-300 rounded w-full p-2 mt-1"
-								type="number"
-								onChange={(e) => setPhone(e.target.value)}
-								value={phone}
+								className="input-modern"
+								type="password"
+								placeholder="Enter your password"
+								onChange={(e) => setPassword(e.target.value)}
+								value={password}
 								required
 							/>
 						</div>
 					</div>
-				)}
 
-				<div className="w-full">
-					<label htmlFor="email">Email</label>
-					<input
-						className="border border-zinc-300 rounded w-full p-2 mt-1"
-						type="email"
-						onChange={(e) => setEmail(e.target.value)}
-						value={email}
-						required
-					/>
-				</div>
-				<div className="w-full">
-					<label htmlFor="password">Password</label>
-					<input
-						className="border border-zinc-300 rounded w-full p-2 mt-1"
-						type="password"
-						onChange={(e) => setPassword(e.target.value)}
-						value={password}
-						required
-					/>
-				</div>
+					<button
+						type="submit"
+						className="btn-primary w-full mt-6 py-3">
+						{state === "Sign Up" ? "Create Account" : "Sign In"}
+					</button>
 
-				<button
-					type="submit"
-					className="bg-primary text-white w-full py-2 rounded-md text-base">
-					{state === "Sign Up" ? "Sign Up" : "Login"}
-				</button>
-
-				{state === "Sign Up" ? (
-					<p>
-						Already have an account?{" "}
-						<span
-							onClick={() => setState("Login")}
-							className="text-primary underline cursor-pointer">
-							Login here
-						</span>
+					<p className="text-center text-sm text-gray-500 mt-6">
+						{state === "Sign Up" ? (
+							<>
+								Already have an account?{" "}
+								<button
+									type="button"
+									onClick={() => setState("Login")}
+									className="text-primary font-medium hover:underline">
+									Sign in
+								</button>
+							</>
+						) : (
+							<>
+								Don't have an account?{" "}
+								<button
+									type="button"
+									onClick={() => setState("Sign Up")}
+									className="text-primary font-medium hover:underline">
+									Create one
+								</button>
+							</>
+						)}
 					</p>
-				) : (
-					<p>
-						Create a new account?{" "}
-						<span
-							onClick={() => setState("Sign Up")}
-							className="text-primary underline cursor-pointer">
-							Click here
-						</span>
-					</p>
-				)}
-			</div>
-		</form>
+				</div>
+			</form>
+		</div>
 	);
 };
 

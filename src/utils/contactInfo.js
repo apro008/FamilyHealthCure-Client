@@ -23,8 +23,7 @@ export const contactInfo = {
 	},
 };
 
-export const email = `${"familyhealthcare60@gmail.com"}
-${"familyhealthcarekolkata@gmail.com"}`;
+export const email = "familyhealthcarekolkata@gmail.com";
 
 export const address = "455, Boral Main Road, kolkata-700154";
 

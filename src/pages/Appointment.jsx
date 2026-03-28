@@ -5,6 +5,7 @@ import { assets } from "../assets/assets_frontend/assets";
 import RelatedDoctors from "../components/RelatedDoctors";
 import toast from "react-hot-toast";
 import axios from "axios";
+import SEO from "../components/SEO";
 
 const Appointment = () => {
 	const { docId } = useParams();
@@ -45,7 +46,7 @@ const Appointment = () => {
 					currentSlot.setMinutes(currentSlot.getMinutes() + 30);
 				}
 			} else {
-				currentSlot.setHours(10, 0, 0, 0); // Start from 10:00 AM
+				currentSlot.setHours(10, 0, 0, 0);
 			}
 
 			const daySlots = [];
@@ -66,127 +67,109 @@ const Appointment = () => {
 		setDocSlots(allSlots);
 	};
 
-	const bookAppointment = async () => {
-		// if (!token) {
-		//   toast.error("Please login");
-		//   return navigate("/login");
-		// }
-		// if (!slotTime) {
-		//   toast.error("Please select a time slot");
-		//   return;
-		// }
-		// toast.loading("Appointment booking...");
-		// try {
-		//   const date = docSlots[slotIndex][0].datetime;
-		//   const slotDate = `${date.getDate()}_${date.getMonth() + 1}_${date.getFullYear()}`;
-		//   const { data } = await axios.post(`${backendUrl}/api/user/book-appointment`, {
-		//     docId,
-		//     slotDate,
-		//     slotTime
-		//   }, {
-		//     headers: { token }
-		//   });
-		//   toast.dismiss();
-		//   if (data.success) {
-		//     toast.success(data.message);
-		//     getDoctorsData();
-		//     navigate("/my-appointments");
-		//   } else {
-		//     toast.error( data.message);
-		//   }
-		// } catch (error) {
-		//   toast.dismiss();
-		//   toast.error(error.message);
-		//   console.error(error);
-		// }
-	};
+	const bookAppointment = async () => {};
 
 	useEffect(() => {
 		if (docInfo) getAvailableSlots();
 	}, [docInfo]);
 
 	if (!docInfo)
-		return <p className="text-center text-gray-500 mt-10">Doctor not found.</p>;
+		return (
+			<div className="flex items-center justify-center h-64">
+				<p className="text-gray-400">Doctor not found.</p>
+			</div>
+		);
 
 	return (
-		<div>
-			<div className="flex flex-col sm:flex-row gap-4">
-				<div>
+		<div className="py-8 animate-fade-in">
+			<SEO
+				title={`Book Appointment - ${docInfo.name}`}
+				path={`/appointment/${docId}`}
+				description={`Book an appointment with ${docInfo.name} (${docInfo.degree} - ${docInfo.speciality}) at Family Health Care Kolkata. ${docInfo.about || ''}`}
+			/>
+			{/* Doctor Info */}
+			<div className="flex flex-col sm:flex-row gap-6">
+				<div className="sm:w-72 flex-shrink-0">
 					<img
-						className="bg-primary w-full sm:max-w-72 rounded-lg"
+						className="w-full rounded-2xl bg-primary-light object-cover"
 						src={docInfo.image}
 						alt=""
 					/>
 				</div>
-				<div className="flex-1 border border-gray-400 rounded-lg p-8 py-7 bg-white mx-2 sm:mx-0 mt-[-80px] sm:mt-0">
-					<p className="flex items-center gap-2 text-2xl font-medium text-gray-900">
-						{docInfo.name}
+				<div className="flex-1 card p-6 sm:p-8">
+					<div className="flex items-center gap-2 mb-1">
+						<h1 className="text-2xl font-bold text-gray-900">
+							{docInfo.name}
+						</h1>
 						<img className="w-5" src={assets.verified_icon} alt="" />
-					</p>
-
-					<div className="flex items-center gap-2 text-sm mt-1 text-gray-600">
-						<p>
-							{docInfo.degree} - {docInfo.speciality}
-						</p>
-						<button className="py-0.5 px-2 border text-xs rounded-full">
-							{docInfo.experience}
-						</button>
 					</div>
 
-					<div>
-						<p className="flex items-center gap-1 text-sm font-medium mt-3 text-gray-900">
-							About <img src={assets.info_icon} alt="" />
-						</p>
-						<p className="text-sm text-gray-500 max-w-[700px] mt-1">
+					<div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
+						<span>{docInfo.degree} - {docInfo.speciality}</span>
+						<span className="py-0.5 px-3 bg-surface text-xs font-medium rounded-full text-gray-600">
+							{docInfo.experience}
+						</span>
+					</div>
+
+					<div className="mb-4">
+						<h3 className="flex items-center gap-1 text-sm font-semibold text-gray-900 mb-1">
+							About <img className="w-3.5" src={assets.info_icon} alt="" />
+						</h3>
+						<p className="text-sm text-gray-500 leading-relaxed max-w-[700px]">
 							{docInfo.about}
 						</p>
 					</div>
 
-					<p className="text-gray-500 font-medium mt-4">
-						Appointment Fee:{" "}
-						<span className="text-gray-600">
-							{currencySymbol}
-							{docInfo.fees}
+					<div className="inline-flex items-center gap-2 px-4 py-2 bg-surface rounded-xl">
+						<span className="text-sm text-gray-500">Appointment Fee:</span>
+						<span className="font-bold text-gray-900">
+							{currencySymbol}{docInfo.fees}
 						</span>
-					</p>
+					</div>
 				</div>
 			</div>
 
-			<div className="sm:ml-72 sm:pl-4 mt-4 font-medium text-gray-700">
-				<p>Booking Slots</p>
+			{/* Booking Slots */}
+			<div className="sm:ml-[304px] mt-8">
+				<h3 className="font-semibold text-gray-900 mb-4">Select a Date</h3>
 
-				<div className="flex gap-3 items-center w-full overflow-x-auto mt-4">
+				<div className="flex gap-3 overflow-x-auto pb-2">
 					{docSlots.length === 0 ? (
-						<p className="text-gray-500 text-sm">No available slots found.</p>
+						<p className="text-gray-400 text-sm">No available slots found.</p>
 					) : (
 						docSlots.map((item, index) => (
-							<div
+							<button
 								onClick={() => setSlotIndex(index)}
 								key={index}
-								className={`text-center py-6 min-w-16 rounded-full cursor-pointer ${
+								className={`flex flex-col items-center justify-center min-w-[4.5rem] py-4 rounded-xl transition-all duration-200 ${
 									slotIndex === index
-										? "bg-primary text-white"
-										: "border border-gray-200"
+										? "bg-primary text-white shadow-glow"
+										: "bg-surface text-gray-600 hover:bg-surface-dark"
 								}`}>
-								<p>{item[0] && daysOfWeek[item[0].datetime.getDay()]}</p>
-								<p>{item[0] && item[0].datetime.getDate()}</p>
-							</div>
+								<span className="text-xs font-semibold">
+									{item[0] && daysOfWeek[item[0].datetime.getDay()]}
+								</span>
+								<span className="text-lg font-bold mt-0.5">
+									{item[0] && item[0].datetime.getDate()}
+								</span>
+							</button>
 						))
 					)}
 				</div>
 
-				<div className="flex item-center gap-3 w-full overflow-x-auto mt-4">
+				<h3 className="font-semibold text-gray-900 mt-6 mb-3">Select a Time</h3>
+				<div className="flex flex-wrap gap-2">
 					{docSlots[slotIndex]?.map((item, index) => (
-						<p
+						<button
 							onClick={() => setSlotTime(item.time)}
-							className={`text-sm font-light flex-shrink-0 px-5 py-2 rounded-full cursor-pointer ${
+							className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 ${
 								item.time === slotTime
-									? "bg-primary text-white"
-									: "text-gray-400 border border-gray-300"
+									? "bg-primary text-white shadow-glow"
+									: "bg-surface text-gray-500 hover:bg-surface-dark hover:text-gray-700"
 							}`}
 							key={index}>
 							{item.time.toLowerCase()}
-						</p>
+						</button>
 					))}
 				</div>
 
@@ -195,7 +178,7 @@ const Appointment = () => {
 						bookAppointment();
 						scrollTo(0, 0);
 					}}
-					className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6 hover:scale-105 transition-all">
+					className="btn-primary mt-8 px-12">
 					Book an appointment
 				</button>
 			</div>

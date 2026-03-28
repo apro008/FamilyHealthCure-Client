@@ -1,19 +1,19 @@
 import React from "react";
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import SpecialityMenu from "../components/SpecialityMenu";
 import TopDoctors from "../components/TopDoctors";
 import Banner from "../components/Banner";
-import SearchDoctors from "../components/SearchDoctors";
 
 const Home = () => {
 	return (
 		<div>
-			{/* <div className="sm:p-4 pb-2 max-w-md mx-auto">
-				<SearchDoctors />
-			</div> */}
-			<div className="relative -mx-4 sm:-mx-[10%]">
-				<Header />
-			</div>
+			<SEO
+				path="/"
+				description="Family Health Care - Premier diagnostics center in Kolkata. Book appointments with 15+ specialist doctors. Pathology services, home sample collection. 455, Boral Main Road, Kolkata-700154. Call +91 7003571264."
+				keywords="Family Health Care Kolkata, diagnostics center, doctor appointment Kolkata, pathology lab, home sample collection, blood test Kolkata, health checkup"
+			/>
+			<Header />
 			<SpecialityMenu />
 			<TopDoctors />
 			<Banner />
